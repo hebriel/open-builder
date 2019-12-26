@@ -12,7 +12,7 @@ add_library(ob-client
     window.cpp
     gameplay.cpp
     world/chunk_mesh_generation.cpp
-)
+        input/input.cpp input/input.h input/button.cpp input/button.h input/gamepad_manager.cpp input/gamepad_manager.h input/joystick.cpp input/joystick.h)
 
 set_flags(ob-client)
 
