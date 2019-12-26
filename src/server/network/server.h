@@ -3,7 +3,7 @@
 #include <SFML/System/Time.hpp>
 #include <array>
 #include <common/network/net_host.h>
-#include <common/world/chunk.h>
+#include <common/world/chunk_manager.h>
 #include <queue>
 #include <unordered_map>
 
@@ -17,6 +17,7 @@ struct ServerEntity {
 struct Peer {
     u32 id = 0;
     ENetPeer *peer = nullptr;
+    bool isActive = false;
 };
 
 struct ChunkRequest {
@@ -56,7 +57,6 @@ class Server final : public NetworkHost {
 
     std::array<ServerEntity, 512> m_entities;
     std::array<Peer, MAX_CONNECTIONS> m_peers{};
-    std::array<bool, MAX_CONNECTIONS> m_peerConnected{false};
 
     ChunkManager m_chunkManager;
     Chunk *m_spawn;
