@@ -3,6 +3,7 @@
 #include "client.h"
 #include "gl/gl_errors.h"
 #include "window.h"
+#include "input/gamepad_manager.h"
 #include <common/debug.h>
 #include <glad/glad.h>
 #include <iostream>
@@ -52,6 +53,7 @@ EngineStatus runClientEngine(const ClientConfig &config)
 
     Client gameClient;
     Keyboard keyboard;
+    GamepadManager gamepadManager;
     EngineStatus status = EngineStatus::Ok;
     FPSCounter counter;
 
@@ -62,7 +64,7 @@ EngineStatus runClientEngine(const ClientConfig &config)
     LOG("Client", "Starting game.");
     while (status == EngineStatus::Ok) {
         // Input
-        status = window.pollEvents(keyboard, [&gameClient](auto key) {
+        status = window.pollEvents(keyboard, gamepadManager, [&gameClient](auto key) {
             gameClient.onKeyRelease(key);
         });
 

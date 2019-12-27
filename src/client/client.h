@@ -14,6 +14,7 @@
 #include <unordered_set>
 
 class Keyboard;
+class GamepadManager;
 
 struct Entity final {
     glm::vec3 position{0.0f, 0.0f, 12.0f}, rotation{0.0f};

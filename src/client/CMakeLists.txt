@@ -21,7 +21,7 @@ add_library(ob-client
     window.cpp
     world/chunk_mesh_generation.cpp
     world/chunk_mesh.cpp
-)
+        input/gamepad.cpp input/gamepad.h)
 set_flags(ob-client)
 
 # Link executable to the libraries
